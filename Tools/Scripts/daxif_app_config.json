@@ -1,0 +1,39 @@
+{
+  "connectionString": "Url=https://org.crm4.dynamics.com; AuthType=ClientSecret; ClientId=__CLIENT_ID__; ClientSecret=__CLIENT_SECRET__",
+  "crmXrmSolutionName": "_SolutionName__",
+  "context": {
+    "entities": [
+      "systemuser",
+      "businessunit",
+      "team",
+      "account",
+      "contact",     
+      "sdkmessageprocessingstep",
+      "plugintype",
+      "sdkmessageprocessingstepsecureconfig",     
+      "usersettings",
+      "timezonedefinition",    
+      "annotation",    
+      "role",
+      "systemuserroles",
+      "appmodule",
+      "organization",
+      "activityparty",
+      "email",
+      "template",
+      "asyncoperation",
+      "workflow",
+      "stringmap",      
+      "audit"     
+    ],
+    "contextNamespace": "Xrm.Domain.Crm",
+    "contextClassName": "XrmContext",
+    "outputFolder": "..\\..\\..\\Xrm.Domain\\Crm"
+  },
+
+  "plugins": {
+    "pluginProjectFile": "..\\..\\..\\Xrm.Plugins\\Xrm.Plugins.csproj",
+    "pluginDll": "..\\..\\..\\Xrm.Plugins\\bin\\Release\\ILMerge\\Xrm.Plugin.dll",
+    "registerInNoIsolation": false
+  }
+}

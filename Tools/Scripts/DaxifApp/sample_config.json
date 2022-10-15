@@ -1,0 +1,21 @@
+{
+  "connectionString": "Url=https://org.crm.dynamics.com; AuthType=ClientSecret; ClientId=xxxxxx-yyyyy-zzzzzz; ClientSecret=XYZ123",
+  "crmXrmSolutionName": "XrmConsit",
+  "context": {
+    "entities": [
+      "account",
+      "contact",
+      "systemuser",
+      "businessunit"
+    ],
+    "contextNamespace": "Test.NS",
+    "contextClassName": "MyContext",
+    "outputFolder": "..\\Xrm.Domain\\Crm"
+  },
+
+  "plugins": {
+    "pluginProjectFile": "..\\..\\Xrm.Plugins\\Xrm.Plugins.csproj",
+    "pluginDll": "..\\..\\Xrm.Plugins\\bin\\Release\\ILMerge\\Xrm.Plugin.dll",
+    "registerInNoIsolation": false
+  }
+}
