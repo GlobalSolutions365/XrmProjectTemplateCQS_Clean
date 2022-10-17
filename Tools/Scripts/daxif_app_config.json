@@ -1,5 +1,6 @@
 {
-  "connectionString": "Url=https://org.crm4.dynamics.com; AuthType=ClientSecret; ClientId=__CLIENT_ID__; ClientSecret=__CLIENT_SECRET__",
+  //"connectionString": "Url=https://org.crm4.dynamics.com; AuthType=ClientSecret; ClientId=__CLIENT_ID__; ClientSecret=__CLIENT_SECRET__",
+  "connectionString": "VaultUrl=https://my_vault.vault.azure.net/; Key=MyConnectionStringSecret",
   "crmXrmSolutionName": "_SolutionName__",
   "context": {
     "entities": [
@@ -7,13 +8,13 @@
       "businessunit",
       "team",
       "account",
-      "contact",     
+      "contact",
       "sdkmessageprocessingstep",
       "plugintype",
-      "sdkmessageprocessingstepsecureconfig",     
+      "sdkmessageprocessingstepsecureconfig",
       "usersettings",
-      "timezonedefinition",    
-      "annotation",    
+      "timezonedefinition",
+      "annotation",
       "role",
       "systemuserroles",
       "appmodule",
@@ -23,8 +24,8 @@
       "template",
       "asyncoperation",
       "workflow",
-      "stringmap",      
-      "audit"     
+      "stringmap",
+      "audit"
     ],
     "contextNamespace": "Xrm.Domain.Crm",
     "contextClassName": "XrmContext",

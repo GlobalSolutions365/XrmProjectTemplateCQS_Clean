@@ -2221,6 +2221,21 @@ namespace Xrm.Domain.Crm {
         }
         
         /// <summary>
+        /// <para>Display Name: Alert</para>
+        /// </summary>
+        [AttributeLogicalName("dsn_alert")]
+        [DisplayName("Alert")]
+        [MaxLength(200)]
+        public string dsn_Alert {
+            get {
+                return GetAttributeValue<string>("dsn_alert");
+            }
+            set {
+                SetAttributeValue("dsn_alert", value);
+            }
+        }
+        
+        /// <summary>
         /// <para>Display Name: BIC/SWIFT</para>
         /// </summary>
         [AttributeLogicalName("dsn_bicswift")]
@@ -2717,6 +2732,20 @@ namespace Xrm.Domain.Crm {
             }
             set {
                 SetAttributeValue("dsn_lastvisit", value);
+            }
+        }
+        
+        /// <summary>
+        /// <para>Display Name: Last sent to IMOS</para>
+        /// </summary>
+        [AttributeLogicalName("dsn_lastsenttoimos")]
+        [DisplayName("Last sent to IMOS")]
+        public DateTime? dsn_LastsenttoIMOS {
+            get {
+                return GetAttributeValue<DateTime?>("dsn_lastsenttoimos");
+            }
+            set {
+                SetAttributeValue("dsn_lastsenttoimos", value);
             }
         }
         
@@ -13471,6 +13500,21 @@ namespace Xrm.Domain.Crm {
         }
         
         /// <summary>
+        /// <para>Information that specifies whether all application users are allowed to access the environment</para>
+        /// <para>Display Name: Allow All Application Users Access.</para>
+        /// </summary>
+        [AttributeLogicalName("allowapplicationuseraccess")]
+        [DisplayName("Allow All Application Users Access.")]
+        public bool? AllowApplicationUserAccess {
+            get {
+                return GetAttributeValue<bool?>("allowapplicationuseraccess");
+            }
+            set {
+                SetAttributeValue("allowapplicationuseraccess", value);
+            }
+        }
+        
+        /// <summary>
         /// <para>Indicates whether automatic response creation is allowed.</para>
         /// <para>Display Name: Allow Automatic Response Creation</para>
         /// </summary>
@@ -13618,6 +13662,21 @@ namespace Xrm.Domain.Crm {
             }
             set {
                 SetAttributeValue("allowmarketingemailexecution", value);
+            }
+        }
+        
+        /// <summary>
+        /// <para>Information that specifies whether Microsoft Trusted Service Tags are allowed</para>
+        /// <para>Display Name: Allow Microsoft Trusted Service Tags</para>
+        /// </summary>
+        [AttributeLogicalName("allowmicrosofttrustedservicetags")]
+        [DisplayName("Allow Microsoft Trusted Service Tags")]
+        public bool? AllowMicrosoftTrustedServiceTags {
+            get {
+                return GetAttributeValue<bool?>("allowmicrosofttrustedservicetags");
+            }
+            set {
+                SetAttributeValue("allowmicrosofttrustedservicetags", value);
             }
         }
         
@@ -17619,6 +17678,21 @@ namespace Xrm.Domain.Crm {
             }
             set {
                 SetAttributeValue("modernadvancedfindfiltering", value);
+            }
+        }
+        
+        /// <summary>
+        /// <para>Indicates whether coauthoring is enabled in modern app designer</para>
+        /// <para>Display Name: Coauthoring in Modern App Designer Enabled</para>
+        /// </summary>
+        [AttributeLogicalName("modernappdesignercoauthoringenabled")]
+        [DisplayName("Coauthoring in Modern App Designer Enabled")]
+        public bool? ModernAppDesignerCoauthoringEnabled {
+            get {
+                return GetAttributeValue<bool?>("modernappdesignercoauthoringenabled");
+            }
+            set {
+                SetAttributeValue("modernappdesignercoauthoringenabled", value);
             }
         }
         
@@ -31174,19 +31248,19 @@ namespace Xrm.Domain.Crm {
         CreateOrRefreshVirtualEntity = 98,
         
         [EnumMember()]
-        [OptionSetMetadata("Cascade FlowSession Permissions Async Operation", Index=88, Lcid=1033)]
+        [OptionSetMetadata("Cascade FlowSession Permissions Async Operation", Index=89, Lcid=1033)]
         CascadeFlowSessionPermissionsAsyncOperation = 100,
         
         [EnumMember()]
-        [OptionSetMetadata("Update Modern Flow Async Operation", Index=89, Lcid=1033)]
+        [OptionSetMetadata("Update Modern Flow Async Operation", Index=90, Lcid=1033)]
         UpdateModernFlowAsyncOperation = 101,
         
         [EnumMember()]
-        [OptionSetMetadata("AsyncArchive Async Operation", Index=90, Lcid=1033)]
+        [OptionSetMetadata("AsyncArchive Async Operation", Index=91, Lcid=1033)]
         AsyncArchiveAsyncOperation = 102,
         
         [EnumMember()]
-        [OptionSetMetadata("Cancel Async Operations (System)", Index=91, Lcid=1033)]
+        [OptionSetMetadata("Cancel Async Operations (System)", Index=92, Lcid=1033)]
         CancelAsyncOperationsSystem = 103,
         
         [EnumMember()]
@@ -31222,11 +31296,15 @@ namespace Xrm.Domain.Crm {
         ImportTranslationAsyncOperation = 210,
         
         [EnumMember()]
-        [OptionSetMetadata("Denormalization Async Operation", Index=86, Lcid=1033)]
+        [OptionSetMetadata("StageAndUpgrade Async Operation", Index=86, Lcid=1033)]
+        StageAndUpgradeAsyncOperation = 211,
+        
+        [EnumMember()]
+        [OptionSetMetadata("Denormalization Async Operation", Index=87, Lcid=1033)]
         DenormalizationAsyncOperation = 239,
         
         [EnumMember()]
-        [OptionSetMetadata("Refresh Runtime Integration Components Async Operation", Index=87, Lcid=1033)]
+        [OptionSetMetadata("Refresh Runtime Integration Components Async Operation", Index=88, Lcid=1033)]
         RefreshRuntimeIntegrationComponentsAsyncOperation = 250,
         
         [EnumMember()]
@@ -31234,39 +31312,39 @@ namespace Xrm.Domain.Crm {
         BulkArchiveBatchAsyncOperation = 261,
         
         [EnumMember()]
-        [OptionSetMetadata("Bulk Archive Operation", Index=92, Lcid=1033)]
+        [OptionSetMetadata("Bulk Archive Operation", Index=93, Lcid=1033)]
         BulkArchiveOperation = 300,
         
         [EnumMember()]
-        [OptionSetMetadata("Archive Execution Async Operation", Index=93, Lcid=1033)]
+        [OptionSetMetadata("Archive Execution Async Operation", Index=94, Lcid=1033)]
         ArchiveExecutionAsyncOperation = 301,
         
         [EnumMember()]
-        [OptionSetMetadata("FinOps Deployment Async Operation", Index=94, Lcid=1033)]
+        [OptionSetMetadata("FinOps Deployment Async Operation", Index=95, Lcid=1033)]
         FinOpsDeploymentAsyncOperation = 302,
         
         [EnumMember()]
-        [OptionSetMetadata("Purge Archived Content Operation", Index=95, Lcid=1033)]
+        [OptionSetMetadata("Purge Archived Content Operation", Index=96, Lcid=1033)]
         PurgeArchivedContentOperation = 304,
         
         [EnumMember()]
-        [OptionSetMetadata("Register Offering Async Operation", Index=96, Lcid=1033)]
+        [OptionSetMetadata("Register Offering Async Operation", Index=97, Lcid=1033)]
         RegisterOfferingAsyncOperation = 305,
         
         [EnumMember()]
-        [OptionSetMetadata("Execute DataProcessing Configuration", Index=97, Lcid=1033)]
+        [OptionSetMetadata("Execute DataProcessing Configuration", Index=98, Lcid=1033)]
         ExecuteDataProcessingConfiguration = 306,
         
         [EnumMember()]
-        [OptionSetMetadata("Sync Synapse Tables Schema", Index=98, Lcid=1033)]
+        [OptionSetMetadata("Sync Synapse Tables Schema", Index=99, Lcid=1033)]
         SyncSynapseTablesSchema = 307,
         
         [EnumMember()]
-        [OptionSetMetadata("FinOps DB Sync Async Operation", Index=99, Lcid=1033)]
+        [OptionSetMetadata("FinOps DB Sync Async Operation", Index=100, Lcid=1033)]
         FinOpsDBSyncAsyncOperation = 308,
         
         [EnumMember()]
-        [OptionSetMetadata("FinOps Unit Test Async Operation", Index=100, Lcid=1033)]
+        [OptionSetMetadata("FinOps Unit Test Async Operation", Index=101, Lcid=1033)]
         FinOpsUnitTestAsyncOperation = 309,
         
         [EnumMember()]

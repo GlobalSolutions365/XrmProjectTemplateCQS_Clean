@@ -1,6 +1,7 @@
 {
-  "connectionString": "Url=https://org.crm.dynamics.com; AuthType=ClientSecret; ClientId=xxxxxx-yyyyy-zzzzzz; ClientSecret=XYZ123",
-  "crmXrmSolutionName": "XrmConsit",
+  //"connectionString": "Url=https://org.crm.dynamics.com; AuthType=ClientSecret; ClientId=xxxxxx-yyyyy-zzzzzz; ClientSecret=XYZ123",
+  "connectionString": "VaultUrl=https://my_vault.vault.azure.net/; Key=MyConnectionStringSecret",
+  "crmXrmSolutionName": "KASXrm",
   "context": {
     "entities": [
       "account",
@@ -10,7 +11,7 @@
     ],
     "contextNamespace": "Test.NS",
     "contextClassName": "MyContext",
-    "outputFolder": "..\\Xrm.Domain\\Crm"
+    "outputFolder": ""
   },
 
   "plugins": {
