@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\ILRepack.2.0.27\build\ILRepack.props" Condition="Exists('..\..\packages\ILRepack.2.0.27\build\ILRepack.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -37,12 +38,17 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="DaxifApp\DaxifApp.exe.config" />
+    <None Include="DaxifApp\readme.md" />
     <None Include="DaxifApp\sample_config.json" />
     <None Include="DaxifApp\XrmContext.exe.config" />
+    <None Include="DaxifApp\XrmContext\Run.fsx" />
     <None Include="DaxifApp\XrmContext\Run.ps1" />
     <None Include="DaxifApp\XrmContext\XrmContext.exe.config" />
     <None Include="daxif_app_config.json" />
     <None Include="packages.config" />
+    <None Include="WebResourceManager\WebResourceManager.exe.config" />
+    <None Include="WebResourceManager\webResourceMappings-sample.json" />
+    <None Include="__LOGIN.bat" />
     <None Include="__REGENERATE CONTEXT.bat" />
     <None Include="__SYNC WEB RESOURCES.bat" />
     <None Include="__UPDATE PLUGINS.bat" />
@@ -100,7 +106,6 @@
     <Content Include="DaxifApp\Microsoft.Bcl.AsyncInterfaces.xml" />
     <Content Include="DaxifApp\Microsoft.Crm.Sdk.Proxy.dll" />
     <Content Include="DaxifApp\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
-    <Content Include="DaxifApp\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
     <Content Include="DaxifApp\Microsoft.IdentityModel.Clients.ActiveDirectory.xml" />
     <Content Include="DaxifApp\Microsoft.PowerApps.AppInsights.BatchedTelemetry.dll" />
     <Content Include="DaxifApp\Microsoft.PowerApps.AppInsights.BatchedTelemetryChannel.dll" />
@@ -237,10 +242,61 @@
     <Content Include="DaxifApp\XrmContext\Microsoft.Xrm.Sdk.Workflow.dll" />
     <Content Include="DaxifApp\XrmContext\Microsoft.Xrm.Tooling.Connector.dll" />
     <Content Include="DaxifApp\XrmContext\Newtonsoft.Json.dll" />
-    <Content Include="DaxifApp\XrmContext\Run.fsx" />
     <Content Include="DaxifApp\XrmContext\System.ValueTuple.dll" />
     <Content Include="DaxifApp\XrmContext\XrmContext.exe" />
     <Content Include="DaxifApp\XrmContext\XrmContext.xml" />
+    <Content Include="ILRepack\ILRepack.exe" />
+    <Content Include="WebResourceManager\Microsoft.Azure.KeyVault.dll" />
+    <Content Include="WebResourceManager\Microsoft.Azure.KeyVault.WebKey.dll" />
+    <Content Include="WebResourceManager\Microsoft.Azure.Services.AppAuthentication.dll" />
+    <Content Include="WebResourceManager\Microsoft.Bcl.AsyncInterfaces.dll" />
+    <Content Include="WebResourceManager\Microsoft.Bcl.AsyncInterfaces.xml" />
+    <Content Include="WebResourceManager\Microsoft.Crm.Sdk.Proxy.dll" />
+    <Content Include="WebResourceManager\Microsoft.Crm.Sdk.Proxy.xml" />
+    <Content Include="WebResourceManager\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+    <Content Include="WebResourceManager\Microsoft.IdentityModel.Clients.ActiveDirectory.xml" />
+    <Content Include="WebResourceManager\Microsoft.Rest.ClientRuntime.Azure.dll" />
+    <Content Include="WebResourceManager\Microsoft.Rest.ClientRuntime.Azure.xml" />
+    <Content Include="WebResourceManager\Microsoft.Rest.ClientRuntime.dll" />
+    <Content Include="WebResourceManager\Microsoft.Xrm.Sdk.Deployment.dll" />
+    <Content Include="WebResourceManager\Microsoft.Xrm.Sdk.Deployment.xml" />
+    <Content Include="WebResourceManager\Microsoft.Xrm.Sdk.dll" />
+    <Content Include="WebResourceManager\Microsoft.Xrm.Sdk.Workflow.dll" />
+    <Content Include="WebResourceManager\Microsoft.Xrm.Sdk.Workflow.xml" />
+    <Content Include="WebResourceManager\Microsoft.Xrm.Sdk.xml" />
+    <Content Include="WebResourceManager\Microsoft.Xrm.Tooling.Connector.dll" />
+    <Content Include="WebResourceManager\Microsoft.Xrm.Tooling.Connector.xml" />
+    <Content Include="WebResourceManager\Newtonsoft.Json.dll" />
+    <Content Include="WebResourceManager\Newtonsoft.Json.xml" />
+    <Content Include="WebResourceManager\System.Buffers.dll" />
+    <Content Include="WebResourceManager\System.Buffers.xml" />
+    <Content Include="WebResourceManager\System.Memory.dll" />
+    <Content Include="WebResourceManager\System.Memory.xml" />
+    <Content Include="WebResourceManager\System.Net.Http.dll" />
+    <Content Include="WebResourceManager\System.Numerics.Vectors.dll" />
+    <Content Include="WebResourceManager\System.Numerics.Vectors.xml" />
+    <Content Include="WebResourceManager\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="WebResourceManager\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="WebResourceManager\System.Security.Cryptography.Algorithms.dll" />
+    <Content Include="WebResourceManager\System.Security.Cryptography.Encoding.dll" />
+    <Content Include="WebResourceManager\System.Security.Cryptography.Primitives.dll" />
+    <Content Include="WebResourceManager\System.Security.Cryptography.X509Certificates.dll" />
+    <Content Include="WebResourceManager\System.Text.Encodings.Web.dll" />
+    <Content Include="WebResourceManager\System.Text.Encodings.Web.xml" />
+    <Content Include="WebResourceManager\System.Text.Json.dll" />
+    <Content Include="WebResourceManager\System.Text.Json.xml" />
+    <Content Include="WebResourceManager\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="WebResourceManager\System.Threading.Tasks.Extensions.xml" />
+    <Content Include="WebResourceManager\System.ValueTuple.dll" />
+    <Content Include="WebResourceManager\System.ValueTuple.xml" />
+    <Content Include="WebResourceManager\WebResourceManager.exe" />
+    <Content Include="WebResourceManager\WebResourceManager.pdb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\ILRepack.2.0.27\build\ILRepack.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\ILRepack.2.0.27\build\ILRepack.props'))" />
+  </Target>
 </Project>

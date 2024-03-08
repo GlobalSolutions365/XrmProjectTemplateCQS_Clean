@@ -9,6 +9,11 @@ namespace JsonHelper
     {
         public string Serialize<T>(T obj)
         {
+            return SerializeStatic<T>(obj);
+        }
+
+        public static string SerializeStatic<T>(T obj)
+        {
             using (MemoryStream memStream = new MemoryStream())
             {
                 DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T), null, int.MaxValue, true, null, false);
@@ -21,6 +26,11 @@ namespace JsonHelper
         }
 
         public T Deserialize<T>(string json)
+        {
+           return DeserializeStatic<T>(json);
+        }
+
+        public static T DeserializeStatic<T>(string json)
         {
             using (MemoryStream memStream = new MemoryStream())
             {

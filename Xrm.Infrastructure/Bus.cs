@@ -2,7 +2,6 @@
 using Autofac.Core;
 using DateProvider;
 using Microsoft.Xrm.Sdk;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -11,6 +10,7 @@ using Xrm.Application.Interfaces;
 using Xrm.Domain.Attributes;
 using Xrm.Domain.Flow;
 using Xrm.Domain.Interfaces;
+using Xrm.Infrastructure.Fakes;
 
 namespace Xrm.Infrastructure
 {
@@ -20,18 +20,25 @@ namespace Xrm.Infrastructure
 
         private readonly IContainer container = null;
 
-        public Bus(IDateProvider dateProvider = null, IConfigurationReader configurationReader = null, IHttpRequestExecutor httpRequestExector = null, IFileSystem fileSystem = null)
+        private readonly DisabledCommands disabledCommands = null;
+
+        public Bus(IDateProvider dateProvider = null, IConfigurationReader configurationReader = null, IHttpRequestExecutor httpRequestExector = null,
+                   IFileSystem fileSystem = null, string disabledCommandConfigJson = null)
         {
             dateProvider = dateProvider ?? new SystemDateProvider();
 
+            disabledCommands = new DisabledCommands(disabledCommandConfigJson);
+
+            configurationReader = configurationReader ?? new BlankConfigurationReader();
+
             var builder = new ContainerBuilder();
 
-            Assembly domain = typeof(Locator).Assembly;
+            Assembly application = typeof(Locator).Assembly;
 
-            builder.RegisterInstance<IEventBus>(this);           
-            builder.RegisterAssemblyTypes(domain).AsClosedTypesOf(typeof(IHandleCommand<>));
-            builder.RegisterAssemblyTypes(domain).AsClosedTypesOf(typeof(IHandleEvent<>));
-            builder.RegisterAssemblyTypes(domain).AsClosedTypesOf(typeof(CrmQuery<>));
+            builder.RegisterInstance<IEventBus>(this);
+            builder.RegisterAssemblyTypes(application).AsClosedTypesOf(typeof(IHandleCommand<>));
+            builder.RegisterAssemblyTypes(application).AsClosedTypesOf(typeof(IHandleEvent<>));
+            builder.RegisterAssemblyTypes(application).AsClosedTypesOf(typeof(CrmQuery<>));
 
             /// Add custom dependencies below
             builder.RegisterInstance(dateProvider);
@@ -47,6 +54,11 @@ namespace Xrm.Infrastructure
 
         public void Handle(ICommand command, FlowArguments flowArguments)
         {
+            if (disabledCommands.IsDisabled(command))
+            {
+                return;
+            }
+
             using (ILifetimeScope scope = container.BeginLifetimeScope())
             {
                 var handlerType = typeof(IHandleCommand<>).MakeGenericType(command.GetType());
@@ -55,7 +67,7 @@ namespace Xrm.Infrastructure
 
                 handler.Handle((dynamic)command);
 
-                if(flowArguments.OrgServiceWrapper.TransactionalOrgService is TransactionalService transactionOrgService)
+                if (flowArguments.OrgServiceWrapper.TransactionalOrgService is TransactionalService transactionOrgService)
                 {
                     transactionOrgService.Commit();
                 }
@@ -88,7 +100,7 @@ namespace Xrm.Infrastructure
         {
             return new ResolvedParameter(
                     (pi, ctx) => pi.ParameterType == typeof(FlowArguments),
-                    (pi, ctx) => flowArguments                    
+                    (pi, ctx) => flowArguments
                 );
         }
 

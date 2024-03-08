@@ -7,6 +7,6 @@ namespace DateProvider
     {
         public DateTime UtcNow => DateTime.UtcNow;
 
-        public DateTime UtcToday => DateTime.UtcNow.ToUniversalTime();
+        public DateTime UtcToday => DateTime.UtcNow.Date;
     }
 }

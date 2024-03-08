@@ -1,10 +1,18 @@
 ﻿using Microsoft.Xrm.Sdk;
 using System;
+using Xrm.Application.Events;
 using Xrm.Domain.Flow;
 using Xrm.Domain.Interfaces;
 
 namespace Xrm.Application
 {
+    public abstract class CommandHandler<TCommand> : CommandHandler<TCommand, VoidEvent> where TCommand : ICommand
+    {
+        public CommandHandler(FlowArguments flowArgs) : base(flowArgs)
+        {
+        }
+    }
+
     public abstract class CommandHandler<TCommand, TResultEvent> : IHandleCommand<TCommand> where TCommand : ICommand where TResultEvent : IEvent
     {
         private readonly ICommandBus cmdBus;

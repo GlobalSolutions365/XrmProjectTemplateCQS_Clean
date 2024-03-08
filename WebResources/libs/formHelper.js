@@ -1,5 +1,4 @@
 /// <reference path="../node_modules/@types/xrm/index.d.ts" />
-/// <reference path="../typings/domain.ts" />
 var XRM;
 (function (XRM) {
     var Libs;

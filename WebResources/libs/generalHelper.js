@@ -14,6 +14,15 @@ var XRM;
                 var match = regex.exec(value);
                 return match != null;
             }
+            static cleanupGuid(guid) {
+                if (!guid) {
+                    return "";
+                }
+                return guid.toLowerCase().replace("{", "").replace("}", "");
+            }
+            static userHasRole(roleName) {
+                return Xrm.Utility.getGlobalContext().userSettings.roles.getByFilter(r => r.name == roleName).length > 0;
+            }
         }
         Libs.GeneralHelper = GeneralHelper;
     })(Libs = XRM.Libs || (XRM.Libs = {}));

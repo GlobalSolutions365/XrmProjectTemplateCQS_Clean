@@ -91,7 +91,7 @@ var XRM;
                                     }
                                 },
                                 operationType: 0,
-                                operationName: "dss_GenericAction"
+                                operationName: "mm365_GenericAction"
                             };
                         }
                     };
@@ -132,7 +132,7 @@ var XRM;
                         });
                     }
                 }, (error) => {
-                    Xrm.Utility.alertDialog(error.message, null);
+                    Xrm.Navigation.openAlertDialog({ text: error.message });
                 });
             }
         }

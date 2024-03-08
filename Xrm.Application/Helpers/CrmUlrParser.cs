@@ -7,7 +7,7 @@ namespace Xrm.Application.Helpers
         /// <summary>
         /// Gets record ID from URL
         /// </summary>
-        /// <param name="url">Record URL like: https://dsndev.crm4.dynamics.com:443/main.aspx?etc=2&id=1f1f23b1-8ade-ea11-a813-000d3ab4f434&histKey=980689625&newWindow=true&pagetype=entityrecord</param>
+        /// <param name="url">Record URL like: https://myorg.crm4.dynamics.com:443/main.aspx?etc=2&id=1f1f23b1-8ade-ea11-a813-000d3ab4f434&histKey=980689625&newWindow=true&pagetype=entityrecord</param>
         /// <returns>Id, like: 1f1f23b1-8ade-ea11-a813-000d3ab4f434</returns>
         public static Guid? IdFromUrl(string url)
         {
