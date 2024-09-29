@@ -121,6 +121,7 @@
     <Compile Include="Interfaces\ITimeZoneProvider.cs" />
     <Compile Include="Interfaces\IXmlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\AccountQueries.cs" />
     <Compile Include="Queries\ConfigurationSettingsQueries.cs" />
   </ItemGroup>
   <ItemGroup>
